@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Code Editor</title>
+    <link rel="stylesheet" href="app.css" >
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <label>output</label>
+            <iframe id="output"></iframe>
+        </div>
+        
+        
+        <div class="right">
+        
+                <label >HTML</label>
+                <textarea id="html-code" onkeyup="run_code()"></textarea>
+        
+
+            
+                <label >CSS</label>
+                <textarea id="css-code" onkeyup="run_code()"></textarea>
+           
+        
+           
+                <label >Java Script</label>
+                <textarea id="js-code" onkeyup="run_code()"></textarea>
+            
+            
+        </div>
+
+        
+
+    </div>
+    <script>
+        function run_code(){
+            let html_code=document.getElementById("html-code").value;
+            let css_code=document.getElementById("css-code").value;
+            let js_code=document.getElementById("js-code").value;
+            let output=document.getElementById("output");
+
+            output.contentDocument.body.innerHTML=html_code+"<style>"+css_code+"</style>";
+            output.contentWindow.eval(js_code);
+        }
+    </script>
+</body>
+</html>
